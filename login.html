@@ -1,58 +1,37 @@
 <!DOCTYPE html>
-<html lang="vi">
+<html>
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Đăng nhập - E-TEAM</title>
+  <title>Đăng nhập – ArenaHub</title>
   <link rel="stylesheet" href="style.css">
 </head>
-<body class="login-body">
-  <header>
-    <div class="logo">E-TEAM</div>
+<body>
+
+<header class="site-header">
+  <div class="header-flex">
+    <div class="brand">ArenaHub</div>
     <nav>
-      <a href="index.html">Trang chủ</a>
-      <a href="team.html">Đội tuyển</a>
-      <a href="schedule.html">Lịch tập</a>
-      <a href="results.html">Kết quả</a>
-      <a href="login.html" class="active">Đăng nhập</a>
+      <a href="index.html" class="nav-link">Trang chủ</a>
+      <a href="team.html" class="nav-link">Đội tuyển</a>
+      <a href="schedule.html" class="nav-link">Lịch tập</a>
+      <a href="results.html" class="nav-link">Kết quả</a>
+      <a href="login.html" class="nav-link">Đăng nhập</a>
     </nav>
-  </header>
+  </div>
+</header>
 
-  <main class="login-container">
-    <div class="login-box">
-      <h2>Đăng nhập</h2>
-      <form id="loginForm">
-        <label for="username">Tên đăng nhập</label>
-        <input type="text" id="username" placeholder="Nhập tên đăng nhập" required>
+<div class="login-wrap fade-in">
+  <div class="login-box">
+    <h2>Đăng nhập</h2>
+    <input type="text" placeholder="Tài khoản">
+    <input type="password" placeholder="Mật khẩu">
+    <a class="btn-primary" href="index.html">Đăng nhập</a>
+  </div>
 
-        <label for="password">Mật khẩu</label>
-        <input type="password" id="password" placeholder="Nhập mật khẩu" required>
+  <div class="login-art">
+    <h3>ArenaHub</h3>
+    <p>Nền tảng quản lý đội tuyển Esports</p>
+  </div>
+</div>
 
-        <button type="submit" class="btn">Đăng nhập</button>
-      </form>
-      <p class="register-text">Chưa có tài khoản? <a href="#">Đăng ký ngay</a></p>
-    </div>
-  </main>
-
-  <footer>
-    <p>© 2025 E-TEAM | Thiết kế bởi Nguyễn Quốc Tiến</p>
-  </footer>
-
-  <script>
-    // Giả lập xử lý đăng nhập (frontend)
-    const form = document.getElementById("loginForm");
-    form.addEventListener("submit", (e) => {
-      e.preventDefault();
-      const username = document.getElementById("username").value.trim();
-      const password = document.getElementById("password").value.trim();
-
-      if (username === "admin" && password === "123") {
-        alert("Đăng nhập thành công!");
-        window.location.href = "index.html"; // quay lại trang chủ
-      } else {
-        alert("Sai tài khoản hoặc mật khẩu! (demo)");
-      }
-    });
-  </script>
 </body>
 </html>
