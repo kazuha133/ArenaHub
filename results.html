@@ -1,25 +1,31 @@
 <!DOCTYPE html>
-<html lang="vi">
+<html>
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Kết quả - E-TEAM</title>
-  <link rel="stylesheet" href="style.css" />
+  <title>Kết quả – ArenaHub</title>
+  <link rel="stylesheet" href="style.css">
 </head>
-<body>
-  <header>
-    <div class="logo">E-TEAM</div>
-    <nav>
-      <a href="index.html">Trang chủ</a>
-      <a href="team.html">Đội tuyển</a>
-      <a href="schedule.html">Lịch tập</a>
-      <a href="results.html" class="active">Kết quả</a>
-    </nav>
-  </header>
 
-  <main>
+<body>
+
+<header class="site-header">
+  <div class="header-flex">
+    <div class="brand">ArenaHub</div>
+    <nav>
+      <a href="index.html" class="nav-link">Trang chủ</a>
+      <a href="team.html" class="nav-link">Đội tuyển</a>
+      <a href="schedule.html" class="nav-link">Lịch tập</a>
+      <a href="results.html" class="nav-link">Kết quả</a>
+      <a href="login.html" class="nav-link">Đăng nhập</a>
+    </nav>
+  </div>
+</header>
+
+<section class="section">
+  <div class="content">
+
     <h2>Kết quả luyện tập</h2>
-    <table>
+
+    <table class="results-table">
       <thead>
         <tr>
           <th>Ngày</th>
@@ -28,6 +34,7 @@
           <th>Ghi chú</th>
         </tr>
       </thead>
+
       <tbody>
         <tr>
           <td>10/11/2025</td>
@@ -35,6 +42,7 @@
           <td class="win">2 - 1</td>
           <td>Thắng kèo chính</td>
         </tr>
+
         <tr>
           <td>08/11/2025</td>
           <td>Team Beta</td>
@@ -43,10 +51,9 @@
         </tr>
       </tbody>
     </table>
-  </main>
 
-  <footer>
-    <p>© 2025 E-TEAM | Thiết kế bởi Nguyễn Quốc Tiến</p>
-  </footer>
+  </div>
+</section>
+
 </body>
 </html>
