@@ -1,29 +1,41 @@
 <!DOCTYPE html>
-<html lang="vi">
+<html>
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Lịch tập - E-TEAM</title>
-  <link rel="stylesheet" href="style.css" />
+  <title>Lịch tập – ArenaHub</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <header>
-    <div class="logo">E-TEAM</div>
-    <nav>
-      <a href="index.html">Trang chủ</a>
-      <a href="team.html">Đội tuyển</a>
-      <a href="schedule.html" class="active">Lịch tập</a>
-      <a href="results.html">Kết quả</a>
-    </nav>
-  </header>
 
-  <main>
+<header class="site-header">
+  <div class="header-flex">
+    <div class="brand">ArenaHub</div>
+    <nav>
+      <a href="index.html" class="nav-link">Trang chủ</a>
+      <a href="team.html" class="nav-link">Đội tuyển</a>
+      <a href="schedule.html" class="nav-link">Lịch tập</a>
+      <a href="results.html" class="nav-link">Kết quả</a>
+      <a href="login.html" class="nav-link">Đăng nhập</a>
+    </nav>
+  </div>
+</header>
+
+<section class="section">
+  <div class="content">
     <h2>Lịch luyện tập</h2>
-    <table>
-      <tr><th>Ngày</th><th>Thời gian</th><th>Nội dung</th><th>Địa điểm</th></tr>
-      <tr><td>12/11/2025</td><td>19:00 - 21:00</td><td>Luyện chiến thuật map 1</td><td>Phòng A</td></tr>
-      <tr><td>14/11/2025</td><td>20:00 - 22:00</td><td>Tập kỹ năng cá nhân</td><td>Online</td></tr>
-    </table>
-  </main>
+
+    <div class="cal-card">
+      <h3>Thứ 3 – 19:30</h3>
+      <p>Chiến thuật – Macro game</p>
+    </div>
+
+    <div class="cal-card">
+      <h3>Thứ 5 – 20:00</h3>
+      <p>Scrim với đội Bravo</p>
+    </div>
+
+  </div>
+</section>
+
+
 </body>
 </html>
