@@ -1,36 +1,174 @@
 <!DOCTYPE html>
-<html>
+<html lang="vi">
 <head>
-  <title>ArenaHub</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>ArenaHub - Dashboard</title>
   <link rel="stylesheet" href="style.css">
+  <script src="role.js" defer></script>
 </head>
 <body>
 
-<header class="site-header">
-  <div class="header-flex">
-    <div class="brand">ArenaHub</div>
-    <nav>
-      <a href="index.html" class="nav-link">Trang chủ</a>
-      <a href="team.html" class="nav-link">Đội tuyển</a>
-      <a href="schedule.html" class="nav-link">Lịch tập</a>
-      <a href="results.html" class="nav-link">Kết quả</a>
-      <a href="login.html" class="nav-link">Đăng nhập</a>
-    </nav>
-  </div>
-</header>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a class="brand" href="index.html">ArenaHub</a>
 
-<div class="event-banner">
-  <p>🔥 ArenaHub Championship sẽ mở đăng ký ngày 30/11</p>
-  <a class="btn-sm" href="#">Chi tiết</a>
-</div>
+      <nav class="main-nav" aria-label="Chính">
+        <a href="index.html">Trang chủ</a>
+        <a href="team.html">Đội tuyển</a>
+        <a href="schedule.html">Lịch tập</a>
+        <a href="results.html">Kết quả</a>
+        <a id="adminAccounts" class="hidden" href="accounts.html">Tài khoản</a>
+      </nav>
 
-<section class="hero">
-  <div class="hero-content fade-in">
-    <h1>Quản lý đội tuyển Esports chuyên nghiệp</h1>
-    <p>Giải pháp tối ưu cho việc huấn luyện, quản lý lịch tập và theo dõi kết quả.</p>
-    <a class="btn-primary" href="team.html">Bắt đầu ngay</a>
+      <div class="nav-actions">
+        <a id="navLogin" class="btn-link" href="login.html">Đăng nhập</a>
+        <button id="navLogout" class="btn-link hidden" onclick="logout()">Đăng xuất</button>
+        <button class="hamburger" aria-label="Mở menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <div class="mobile-nav hidden" id="mobileNav">
+    <a href="index.html">Trang chủ</a>
+    <a href="team.html">Đội tuyển</a>
+    <a href="schedule.html">Lịch tập</a>
+    <a href="results.html">Kết quả</a>
+    <a id="mobileAdminAccounts" class="hidden" href="accounts.html">Tài khoản</a>
+    <a id="mobileNavLogin" href="login.html">Đăng nhập</a>
+    <a id="mobileNavLogout" class="hidden" href="#" onclick="logout()">Đăng xuất</a>
   </div>
-</section>
+
+  <section class="hero">
+    <div class="hero-inner">
+      <div class="hero-content">
+        <h1>Create. Compete. Conquer.</h1>
+        <p class="lead">Quản lý giải đấu và đội tuyển chuyên nghiệp — tạo bracket, lên lịch, theo dõi kết quả và phát triển cộng đồng.</p>
+        <div class="hero-ctas">
+          <a class="btn-primary" href="#">Tạo giải đấu</a>
+          <a class="btn-outline" href="team.html">Duyệt đội tuyển</a>
+        </div>
+      </div>
+
+      <div class="hero-cards">
+        <article class="t-card">
+          <div class="t-media" style="background-image:url('assets/images/card1.jpg')"></div>
+          <div class="t-info">
+            <h3>Arena Alpha</h3>
+            <p class="meta">5 thành viên • Ranked</p>
+          </div>
+        </article>
+
+        <article class="t-card">
+          <div class="t-media" style="background-image:linear-gradient(180deg, rgba(0,0,0,0.25), rgba(0,0,0,0.6)), url('assets/images/card2.jpg')"></div>
+          <div class="t-info">
+            <h3>Summer Cup</h3>
+            <p class="meta">12 đội • 16/06/2025</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <main class="container">
+    <section class="overview">
+      <div class="overview-left">
+        <h2>Tổng quan hệ thống</h2>
+        <p class="muted">Hệ thống quản lý giải đấu và đội tuyển chuyên nghiệp. Xem nhanh các giải đấu sắp tới, lịch tập và kết quả gần nhất.</p>
+
+        <div class="stats-grid">
+          <div class="stat">
+            <div class="stat-value">24</div>
+            <div class="stat-label">Giải đấu</div>
+          </div>
+          <div class="stat">
+            <div class="stat-value">128</div>
+            <div class="stat-label">Đội tuyển</div>
+          </div>
+          <div class="stat">
+            <div class="stat-value">3,412</div>
+            <div class="stat-label">Người chơi</div>
+          </div>
+        </div>
+      </div>
+
+      <aside class="overview-right">
+        <div class="card small">
+          <h4>Thông báo</h4>
+          <p class="muted">Không có thông báo mới.</p>
+        </div>
+
+        <div class="card small">
+          <h4>Hành động nhanh</h4>
+          <div class="quick-actions">
+            <a class="btn-ghost">Tạo đội</a>
+            <a class="btn-ghost">Tạo lịch</a>
+          </div>
+        </div>
+      </aside>
+    </section>
+
+    <section class="results">
+      <h2>Kết quả gần nhất</h2>
+      <table class="results-table">
+        <thead>
+          <tr>
+            <th>Ngày</th>
+            <th>Đối thủ</th>
+            <th>Tỉ số</th>
+            <th>Ghi chú</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>10/11/2025</td>
+            <td>Team A</td>
+            <td class="win">2 - 1</td>
+            <td>Chiến thắng áp đảo</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div>© ArenaHub</div>
+      <div class="muted">Thiết kế giao diện theo phong cách Battlefy</div>
+    </div>
+  </footer>
+
+  <script>
+    (function(){
+      const hb = document.querySelector('.hamburger');
+      const mobile = document.getElementById('mobileNav');
+      hb && hb.addEventListener('click', () => {
+        const expanded = hb.getAttribute('aria-expanded') === 'true';
+        hb.setAttribute('aria-expanded', String(!expanded));
+        mobile.classList.toggle('hidden');
+      });
+
+      document.addEventListener('DOMContentLoaded', () => {
+        const adminDesktop = document.getElementById('adminAccounts');
+        const adminMobile = document.getElementById('mobileAdminAccounts');
+        if (adminDesktop && adminMobile && !adminDesktop.classList.contains('hidden')) {
+          adminMobile.classList.remove('hidden');
+        }
+        const loginDesktop = document.getElementById('navLogin');
+        const loginMobile = document.getElementById('mobileNavLogin');
+        const logoutDesktop = document.getElementById('navLogout');
+        const logoutMobile = document.getElementById('mobileNavLogout');
+        if (loginDesktop && loginMobile && loginDesktop.classList.contains('hidden')) {
+          loginMobile.classList.add('hidden');
+        }
+        if (logoutDesktop && logoutMobile && !logoutDesktop.classList.contains('hidden')) {
+          logoutMobile.classList.remove('hidden');
+        }
+      });
+    })();
+  </script>
 
 </body>
 </html>
