@@ -1,41 +1,115 @@
 <!DOCTYPE html>
-<html>
+<html lang="vi">
 <head>
-  <title>Lịch tập – ArenaHub</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Lịch tập - ArenaHub</title>
   <link rel="stylesheet" href="style.css">
+  <script src="role.js" defer></script>
 </head>
 <body>
 
-<header class="site-header">
-  <div class="header-flex">
-    <div class="brand">ArenaHub</div>
-    <nav>
-      <a href="index.html" class="nav-link">Trang chủ</a>
-      <a href="team.html" class="nav-link">Đội tuyển</a>
-      <a href="schedule.html" class="nav-link">Lịch tập</a>
-      <a href="results.html" class="nav-link">Kết quả</a>
-      <a href="login.html" class="nav-link">Đăng nhập</a>
-    </nav>
-  </div>
-</header>
-
-<section class="section">
-  <div class="content">
-    <h2>Lịch luyện tập</h2>
-
-    <div class="cal-card">
-      <h3>Thứ 3 – 19:30</h3>
-      <p>Chiến thuật – Macro game</p>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a class="brand" href="index.html">ArenaHub</a>
+      <nav class="main-nav" aria-label="Chính">
+        <a href="index.html">Trang chủ</a>
+        <a href="team.html">Đội tuyển</a>
+        <a href="schedule.html">Lịch tập</a>
+        <a href="results.html">Kết quả</a>
+        <a id="adminAccounts" class="hidden" href="accounts.html">Tài khoản</a>
+      </nav>
+      <div class="nav-actions">
+        <a id="navLogin" class="btn-link" href="login.html">Đăng nhập</a>
+        <button id="navLogout" class="btn-link hidden" onclick="logout()">Đăng xuất</button>
+        <button class="hamburger" aria-label="Mở menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
     </div>
+  </header>
 
-    <div class="cal-card">
-      <h3>Thứ 5 – 20:00</h3>
-      <p>Scrim với đội Bravo</p>
-    </div>
-
+  <div class="mobile-nav hidden" id="mobileNav">
+    <a href="index.html">Trang chủ</a>
+    <a href="team.html">Đội tuyển</a>
+    <a href="schedule.html">Lịch tập</a>
+    <a href="results.html">Kết quả</a>
+    <a id="mobileAdminAccounts" class="hidden" href="accounts.html">Tài khoản</a>
+    <a id="mobileNavLogin" href="login.html">Đăng nhập</a>
+    <a id="mobileNavLogout" class="hidden" href="#" onclick="logout()">Đăng xuất</a>
   </div>
-</section>
 
+  <main class="container">
+    <section style="margin-top:18px">
+      <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap">
+        <div>
+          <h2>Lịch luyện tập</h2>
+          <p class="muted">Lịch tập của các đội, sự kiện và buổi luyện chiến thuật.</p>
+        </div>
+
+        <div style="display:flex;gap:10px;align-items:center">
+          <a id="adminSchedule" class="btn-primary hidden">Quản trị lịch (Admin)</a>
+          <a id="coachSchedule" class="btn-primary hidden">Tạo lịch tập (Coach)</a>
+        </div>
+      </div>
+
+      <div id="scheduleContent" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:18px;margin-top:18px">
+        <div class="card">
+          <h4 style="margin:0 0 8px">Thứ 3 — 19:00</h4>
+          <p class="muted" style="margin:0 0 12px">Luyện chiến thuật Macro • Arena Alpha</p>
+          <div style="display:flex;gap:8px">
+            <a class="btn-ghost">Chi tiết</a>
+            <a class="btn-ghost">Tham gia</a>
+          </div>
+        </div>
+
+        <div class="card">
+          <h4 style="margin:0 0 8px">Thứ 6 — 20:00</h4>
+          <p class="muted" style="margin:0 0 12px">Scrim vs Crimson Wolves</p>
+          <div style="display:flex;gap:8px">
+            <a class="btn-ghost">Chi tiết</a>
+            <a class="btn-ghost">Báo cáo</a>
+          </div>
+        </div>
+
+        <div class="card">
+          <h4 style="margin:0 0 8px">Chủ nhật — 15:00</h4>
+          <p class="muted" style="margin:0 0 12px">Luyện kỹ năng cá nhân</p>
+          <div style="display:flex;gap:8px">
+            <a class="btn-ghost">Chi tiết</a>
+            <a class="btn-ghost">Tham gia</a>
+          </div>
+        </div>
+      </div>
+
+      <div id="scheduleLocked" class="card hidden" style="margin-top:18px">
+        <h3>Yêu cầu đăng nhập</h3>
+        <p class="muted">Bạn cần đăng nhập để xem lịch luyện tập. Vui lòng <a href="login.html">đăng nhập</a>.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div>© ArenaHub</div>
+      <div class="muted">Đồng bộ giao diện lịch</div>
+    </div>
+  </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const role = localStorage.getItem('role');
+      const content = document.getElementById('scheduleContent');
+      const locked = document.getElementById('scheduleLocked');
+      if (!role) {
+        if (content) content.classList.add('hidden');
+        if (locked) locked.classList.remove('hidden');
+      } else {
+        if (content) content.classList.remove('hidden');
+        if (locked) locked.classList.add('hidden');
+      }
+    });
+  </script>
 
 </body>
 </html>
