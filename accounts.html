@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Quản lý tài khoản - ArenaHub</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="role.js" defer></script>
+</head>
+<body onload="checkAdmin()">
+
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a class="brand" href="index.html">ArenaHub</a>
+      <nav class="main-nav" aria-label="Chính">
+        <a href="index.html">Trang chủ</a>
+        <a href="team.html">Đội tuyển</a>
+        <a href="schedule.html">Lịch tập</a>
+        <a href="results.html">Kết quả</a>
+        <a id="adminAccounts" class="hidden" href="accounts.html">Tài khoản</a>
+      </nav>
+      <div class="nav-actions">
+        <a id="navLogin" class="btn-link" href="login.html">Đăng nhập</a>
+        <button id="navLogout" class="btn-link hidden" onclick="logout()">Đăng xuất</button>
+        <button class="hamburger" aria-label="Mở menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <div class="mobile-nav hidden" id="mobileNav">
+    <a href="index.html">Trang chủ</a>
+    <a href="team.html">Đội tuyển</a>
+    <a href="schedule.html">Lịch tập</a>
+    <a href="results.html">Kết quả</a>
+    <a id="mobileAdminAccounts" class="hidden" href="accounts.html">Tài khoản</a>
+    <a id="mobileNavLogin" href="login.html">Đăng nhập</a>
+    <a id="mobileNavLogout" class="hidden" href="#" onclick="logout()">Đăng xuất</a>
+  </div>
+
+  <main class="container">
+    <section style="margin-top:18px">
+      <h2>Quản lý tài khoản</h2>
+      <p class="muted">Chỉ Admin mới truy cập được trang này.</p>
+
+      <div style="margin-top:16px">
+        <a class="btn-primary" style="margin-bottom:14px">Thêm tài khoản</a>
+
+        <table class="results-table">
+          <thead>
+            <tr>
+              <th>Tài khoản</th>
+              <th>Quyền</th>
+              <th>Hành động</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>admin</td>
+              <td>Admin</td>
+              <td><button class="btn-sm-danger">Xoá</button></td>
+            </tr>
+            <tr>
+              <td>coach1</td>
+              <td>Coach</td>
+              <td><button class="btn-sm-danger">Xoá</button></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div>© ArenaHub</div>
+      <div class="muted">Quản lý người dùng</div>
+    </div>
+  </footer>
+
+</body>
+</html>
