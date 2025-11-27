@@ -1,37 +1,23 @@
 <!DOCTYPE html>
-<html>
+<html lang="vi">
 <head>
-  <title>Đăng nhập – ArenaHub</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Đăng nhập - ArenaHub</title>
   <link rel="stylesheet" href="style.css">
+  <script src="role.js" defer></script>
 </head>
 <body>
 
-<header class="site-header">
-  <div class="header-flex">
-    <div class="brand">ArenaHub</div>
-    <nav>
-      <a href="index.html" class="nav-link">Trang chủ</a>
-      <a href="team.html" class="nav-link">Đội tuyển</a>
-      <a href="schedule.html" class="nav-link">Lịch tập</a>
-      <a href="results.html" class="nav-link">Kết quả</a>
-      <a href="login.html" class="nav-link">Đăng nhập</a>
-    </nav>
-  </div>
-</header>
-
-<div class="login-wrap fade-in">
   <div class="login-box">
     <h2>Đăng nhập</h2>
-    <input type="text" placeholder="Tài khoản">
-    <input type="password" placeholder="Mật khẩu">
-    <a class="btn-primary" href="index.html">Đăng nhập</a>
+    <select id="roleSelect">
+      <option value="player">Player</option>
+      <option value="coach">Coach</option>
+      <option value="admin">Admin</option>
+    </select>
+    <button class="btn-primary" onclick="login()" style="width:100%">Xác nhận</button>
   </div>
-
-  <div class="login-art">
-    <h3>ArenaHub</h3>
-    <p>Nền tảng quản lý đội tuyển Esports</p>
-  </div>
-</div>
 
 </body>
 </html>
