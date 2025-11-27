@@ -1,59 +1,109 @@
 <!DOCTYPE html>
-<html>
+<html lang="vi">
 <head>
-  <title>Kết quả – ArenaHub</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Kết quả - ArenaHub</title>
   <link rel="stylesheet" href="style.css">
+  <script src="role.js" defer></script>
 </head>
-
 <body>
 
-<header class="site-header">
-  <div class="header-flex">
-    <div class="brand">ArenaHub</div>
-    <nav>
-      <a href="index.html" class="nav-link">Trang chủ</a>
-      <a href="team.html" class="nav-link">Đội tuyển</a>
-      <a href="schedule.html" class="nav-link">Lịch tập</a>
-      <a href="results.html" class="nav-link">Kết quả</a>
-      <a href="login.html" class="nav-link">Đăng nhập</a>
-    </nav>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a class="brand" href="index.html">ArenaHub</a>
+      <nav class="main-nav" aria-label="Chính">
+        <a href="index.html">Trang chủ</a>
+        <a href="team.html">Đội tuyển</a>
+        <a href="schedule.html">Lịch tập</a>
+        <a href="results.html">Kết quả</a>
+        <a id="adminAccounts" class="hidden" href="accounts.html">Tài khoản</a>
+      </nav>
+      <div class="nav-actions">
+        <a id="navLogin" class="btn-link" href="login.html">Đăng nhập</a>
+        <button id="navLogout" class="btn-link hidden" onclick="logout()">Đăng xuất</button>
+        <button class="hamburger" aria-label="Mở menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <div class="mobile-nav hidden" id="mobileNav">
+    <a href="index.html">Trang chủ</a>
+    <a href="team.html">Đội tuyển</a>
+    <a href="schedule.html">Lịch tập</a>
+    <a href="results.html">Kết quả</a>
+    <a id="mobileAdminAccounts" class="hidden" href="accounts.html">Tài khoản</a>
+    <a id="mobileNavLogin" href="login.html">Đăng nhập</a>
+    <a id="mobileNavLogout" class="hidden" href="#" onclick="logout()">Đăng xuất</a>
   </div>
-</header>
 
-<section class="section">
-  <div class="content">
+  <main class="container">
+    <section style="margin-top:18px">
+      <h2>Kết quả thi đấu</h2>
+      <p class="muted">Lịch sử trận đấu và kết quả gần nhất.</p>
 
-    <h2>Kết quả luyện tập</h2>
+      <div style="margin-top:16px">
+        <table class="results-table">
+          <thead>
+            <tr>
+              <th>Ngày</th>
+              <th>Đối thủ</th>
+              <th>Tỉ số</th>
+              <th>Ghi chú</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>10/11/2025</td>
+              <td>Team A</td>
+              <td class="win">2 - 1</td>
+              <td>Chiến thắng áp đảo</td>
+              <td>
+                <div style="display:flex;gap:8px">
+                  <button class="btn-ghost coach-result-control hidden">Chỉnh sửa</button>
+                  <button class="btn-ghost coach-result-control hidden">Xoá</button>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td>03/11/2025</td>
+              <td>Crimson Wolves</td>
+              <td class="lose">0 - 2</td>
+              <td>Thua trong hiệp phụ</td>
+              <td>
+                <div style="display:flex;gap:8px">
+                  <button class="btn-ghost coach-result-control hidden">Chỉnh sửa</button>
+                  <button class="btn-ghost coach-result-control hidden">Xoá</button>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td>28/10/2025</td>
+              <td>Night Raiders</td>
+              <td class="win">2 - 0</td>
+              <td>Hiệu suất cao</td>
+              <td>
+                <div style="display:flex;gap:8px">
+                  <button class="btn-ghost coach-result-control hidden">Chỉnh sửa</button>
+                  <button class="btn-ghost coach-result-control hidden">Xoá</button>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </main>
 
-    <table class="results-table">
-      <thead>
-        <tr>
-          <th>Ngày</th>
-          <th>Đối thủ</th>
-          <th>Kết quả</th>
-          <th>Ghi chú</th>
-        </tr>
-      </thead>
-
-      <tbody>
-        <tr>
-          <td>10/11/2025</td>
-          <td>Team Alpha</td>
-          <td class="win">2 - 1</td>
-          <td>Thắng kèo chính</td>
-        </tr>
-
-        <tr>
-          <td>08/11/2025</td>
-          <td>Team Beta</td>
-          <td class="lose">0 - 2</td>
-          <td>Cần cải thiện giao tiếp</td>
-        </tr>
-      </tbody>
-    </table>
-
-  </div>
-</section>
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div>© ArenaHub</div>
+      <div class="muted">Cập nhật kết quả nhanh</div>
+    </div>
+  </footer>
 
 </body>
 </html>
